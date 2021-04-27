@@ -1,0 +1,39 @@
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Server",
+            "protocol": "inspector",
+            "program": "${workspaceRoot}/src/backend/main.ts",
+        
+            "sourceMaps": true,
+            "runtimeArgs": ["--inspect"],
+            "outFiles": [
+                "${workspaceFolder}/lib/**/*.js"
+            ]
+        },
+            {
+            "name": "Client",
+            "type": "chrome",
+            "request": "launch",
+            "sourceMaps": true,
+            "preLaunchTask": "startrds",
+            "postDebugTask": "debug-stop",
+            "url": "http://localhost:3000",     // create-react-app's default port 3000
+            "webRoot": "${workspaceRoot}/src"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Server/Client",
+            "configurations": ["Server", "Client"]
+        }
+    ]
+}
+
+
